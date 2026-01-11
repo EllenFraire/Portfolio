@@ -115,4 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // (Handled by class gsap-fade-up generally, but let's make cards stagger if they are in the grid)
     // Note: The general rule above handles them, but specific staggering can be added if needed.
     
+    // --- Project Video Hover ---
+    const videoCard = document.querySelector('.project-card');
+    const video = document.getElementById('project-video-1');
+
+    if (videoCard && video) {
+        videoCard.addEventListener('mouseenter', () => {
+            video.play();
+        });
+
+        videoCard.addEventListener('mouseleave', () => {
+            video.pause();
+        });
+    }
 });

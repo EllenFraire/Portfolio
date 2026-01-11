@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Lisbonne | Helen Frere</title>
+    <meta name="description" content="Détail du projet vidéo réalisé à Lisbonne.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN for immediate usage) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            dark: '#0a192f',
+                            main: '#112240',
+                            light: '#233554',
+                            mist: '#8892b0',
+                            stone: '#f8fafc',
+                            gold: '#ccd6f6',
+                            accent: '#64ffda',
+                        },
+                        gold: {
+                            DEFAULT: '#c5a065'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-navy-stone text-navy-dark antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 bg-navy-dark/90 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="font-serif text-2xl tracking-wider hover:text-gold transition-colors">E.F.</a>
+            <a href="index.html#projects" class="text-sm font-light tracking-widest uppercase hover:text-gold transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2"></i>
+                Retour aux projets
+            </a>
+        </div>
+    </nav>
+
+    <!-- Project Detail Section -->
+    <main class="pt-32 pb-24 px-6 md:px-12">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Video Player -->
+            <div class="mb-12 shadow-2xl rounded-sm overflow-hidden border-4 border-white">
+                <video src="LEX Lisbonne - Vlog.m4v" controls autoplay loop class="w-full h-full object-cover"></video>
+            </div>
+
+            <!-- Project Description -->
+            <div class="bg-white p-8 md:p-12 rounded-sm shadow-xl">
+                <h1 class="font-serif text-4xl text-navy-dark mb-4">Vlog de Voyage : Lisbonne</h1>
+                <p class="text-gold font-semibold mb-6">Production Vidéo | Voyage</p>
+                
+                <div class="prose max-w-none text-gray-700 leading-relaxed">
+                    <p class="mb-4">
+                        Ce projet est un vlog personnel qui retrace mon voyage à Lisbonne. L'objectif était de capturer l'atmosphère vibrante de la ville, son architecture unique et les moments forts de mon séjour.
+                    </p>
+                    <p class="mb-4">
+                        De la prise de vue au montage, j'ai géré l'ensemble du processus de création. Le plus grand défi a été de synthétiser des heures de rushs en un format court et dynamique qui reste engageant pour le spectateur.
+                    </p>
+                    <h3 class="font-serif text-2xl text-navy-main mt-8 mb-4">Détails Techniques</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><strong>Caméra :</strong> [Nom de la caméra/smartphone]</li>
+                        <li><strong>Logiciel de montage :</strong> [Nom du logiciel, ex: Adobe Premiere Pro, Final Cut Pro]</li>
+                        <li><strong>Musique :</strong> [Nom de l'artiste ou de la source]</li>
+                    </ul>
+                    <p>
+                        Vous pouvez écrire ici une description plus détaillée de votre projet, expliquer vos choix créatifs, les difficultés rencontrées, et ce que vous avez appris.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-dark text-white py-8">
+        <div class="max-w-7xl mx-auto px-6 text-center text-navy-mist">
+            <p>&copy; 2026 Ellen FRAIRE. Tous droits réservés.</p>
+        </div>
+    </footer>
+    
+    <!-- FontAwesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
