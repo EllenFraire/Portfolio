@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Helen Frere</title>
+    <meta name="description" content="Portfolio personnel - Étudiant & Développeur">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN for immediate usage) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            dark: '#0a192f',   /* Bleu nuit très profond */
+                            main: '#112240',   /* Bleu marine standard */
+                            light: '#233554',  /* Bleu plus clair pour les cards */
+                            mist: '#8892b0',   /* Gris-bleu pour le texte secondaire */
+                            stone: '#f8fafc',  /* Fond très clair (Slate 50) */
+                            gold: '#ccd6f6',   /* Argenté/Blanc cassé pour le contraste (plus moderne que l'or jaune) */
+                            accent: '#64ffda', /* Optionnel: Touche Cyan 'Tech' discrète ou garder Gold #d4a373 */
+                        },
+                        gold: {
+                            DEFAULT: '#c5a065' /* Or classique élégant qui va bien avec le bleu marine */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    backgroundImage: {
+                        'mist-texture': "url('https://images.unsplash.com/photo-1487147264018-f937fba0c817?q=80&w=2400&auto=format&fit=crop')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-navy-stone text-navy-dark antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 backdrop-blur-sm bg-navy-dark/90 text-white">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl tracking-wider hover:text-gold transition-colors">E.F.</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 text-sm font-light tracking-widest uppercase">
+                <a href="#about" class="hover:text-gold transition-colors relative group">
+                    À propos
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#timeline" class="hover:text-gold transition-colors relative group">
+                    Parcours
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#projects" class="hover:text-gold transition-colors relative group">
+                    Projets
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#activities" class="hover:text-gold transition-colors relative group">
+                    Activités
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#contact" class="px-4 py-2 border border-gold text-gold hover:bg-gold hover:text-navy-dark transition-all rounded-sm">
+                    Contact
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Overlay with Parallax feel -->
+        <div class="absolute inset-0 z-0">
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-navy-dark/80 via-navy-main/60 to-navy-stone z-10"></div>
+            <!-- Image: Natural Blue Mist/Landscape -->
+            <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2600&auto=format&fit=crop" 
+                 alt="Natural Blue Landscape" 
+                 class="w-full h-full object-cover opacity-80 scale-105" 
+                 id="hero-bg">
+        </div>
+
+        <div class="relative z-20 text-center px-4 max-w-4xl mx-auto">
+            <p class="hero-reveal text-gold tracking-[0.3em] uppercase text-sm mb-4 font-semibold">Portfolio Personnel</p>
+            <h1 class="hero-reveal font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-tight">
+                Helen <br> <span class="italic text-navy-mist">Frere</span>
+            </h1>
+            <p class="hero-reveal text-gray-200 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">
+                Étudiant passionné par le web et l'innovation. <br>
+                Rigueur technique & Design élégant.
+            </p>
+            <div class="hero-reveal flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="#projects" class="px-8 py-3 bg-gold text-navy-dark font-semibold hover:bg-white transition-all duration-300 rounded-sm shadow-lg shadow-navy-dark/30">
+                    Voir mes projets
+                </a>
+                <a href="#contact" class="px-8 py-3 border border-white text-white hover:bg-white hover:text-navy-dark transition-all duration-300 rounded-sm">
+                    Me contacter
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-white/50">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 md:px-12 bg-navy-stone relative overflow-hidden">
+        <!-- Decorative subtle elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="gsap-fade-right relative">
+                <div class="relative z-10 rounded overflow-hidden shadow-2xl">
+                    <!-- Image: Natural Blue Landscape -->
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop" alt="Paysage Bleu Naturel" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                <!-- Offset border -->
+                <div class="absolute top-4 -left-4 w-full h-full border-2 border-navy-main z-0"></div>
+            </div>
+
+            <div class="gsap-fade-left">
+                <h2 class="text-navy-main text-sm font-bold tracking-widest uppercase mb-2">À propos</h2>
+                <h3 class="font-serif text-4xl text-navy-dark mb-6">Curiosité, Rigueur et <span class="italic text-navy-main">Innovation</span>.</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Je suis actuellement étudiant en développement web. Mon approche se veut structurée et moderne, privilégiant des interfaces épurées et performantes.
+                </p>
+                <p class="text-gray-600 mb-6 leading-relaxed border-l-4 border-gold pl-4 italic">
+                    Mon expérience à l'international m'a permis de développer une grande capacité d'adaptation et une vision globale des projets numériques.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-8">
+                    <span class="px-3 py-1 bg-navy-main text-white text-xs rounded-full">Développement Web</span>
+                    <span class="px-3 py-1 bg-navy-main text-white text-xs rounded-full">Architecture</span>
+                    <span class="px-3 py-1 bg-navy-main text-white text-xs rounded-full">International</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline / Parcours -->
+    <section id="timeline" class="py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 gsap-fade-up">
+                <h2 class="font-serif text-4xl text-navy-dark">Mon Parcours</h2>
+                <div class="w-16 h-1 bg-gold mx-auto mt-4"></div>
+            </div>
+
+            <!-- Vertical Line Container -->
+            <div class="relative border-l-2 border-navy-mist/30 ml-4 md:ml-1/2 space-y-12">
+                
+                <!-- Item 1 (Actuel) -->
+                <div class="relative pl-8 md:pl-0 md:ml-auto md:w-1/2 md:text-left group timeline-item">
+                    <!-- Dot -->
+                    <div class="absolute top-0 -left-[9px] md:-left-[9px] w-4 h-4 bg-gold rounded-full border-4 border-white shadow-md"></div>
+                    
+                    <div class="md:ml-8">
+                        <span class="text-navy-main font-bold text-sm tracking-widest">2024 - Présent</span>
+                        <h4 class="text-xl font-bold text-navy-dark mt-1">Master / Formation Actuelle</h4>
+                        <p class="text-gray-500 text-sm mb-2">Nom de l'école - Ville</p>
+                        <p class="text-gray-600 text-sm">Spécialisation en développement full-stack et architecture logicielle.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 (Erasmus) -->
+                <div class="relative pl-8 md:pl-0 md:mr-auto md:w-1/2 md:text-right group timeline-item">
+                    <!-- Dot -->
+                    <div class="absolute top-0 -left-[9px] md:left-auto md:-right-[9px] w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-md z-10"></div>
+                    
+                    <div class="md:mr-8">
+                        <span class="text-blue-700 font-bold text-sm tracking-widest uppercase">🇪🇺 Semestre International</span>
+                        <h4 class="text-xl font-bold text-navy-dark mt-1">Université Partenaire</h4>
+                        <p class="text-gray-500 text-sm mb-2">Ville, Pays</p>
+                        <p class="text-gray-600 text-sm">Immersion anglophone, gestion de projets interculturels et cours avancés.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 (Formation précédente) -->
+                <div class="relative pl-8 md:pl-0 md:ml-auto md:w-1/2 md:text-left group timeline-item">
+                    <!-- Dot -->
+                    <div class="absolute top-0 -left-[9px] w-4 h-4 bg-slate-300 rounded-full border-4 border-white shadow-md"></div>
+                    
+                    <div class="md:ml-8">
+                        <span class="text-gray-500 font-bold text-sm tracking-widest">2020 - 2023</span>
+                        <h4 class="text-xl font-bold text-navy-dark mt-1">Licence / Bachelor</h4>
+                        <p class="text-gray-500 text-sm mb-2">Université / École</p>
+                        <p class="text-gray-600 text-sm">Acquisition des fondamentaux en informatique et gestion de projet.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects & Experience Section -->
+    <section id="projects" class="py-24 px-6 md:px-12 bg-navy-stone">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gsap-fade-up">
+                <div>
+                    <h2 class="text-navy-main text-sm font-bold tracking-widest uppercase mb-2">Portfolio</h2>
+                    <h3 class="font-serif text-4xl text-navy-dark">Réalisations & Expériences</h3>
+                </div>
+                <div class="hidden md:block w-32 h-[1px] bg-navy-dark/20 mb-4"></div>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Expérience Pro -->
+                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card cursor-pointer border border-slate-100">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-main/30 group-hover:bg-transparent transition-all z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Bureau" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 right-4 bg-gold text-navy-dark text-xs font-bold px-3 py-1 z-20">Stage</span>
+                    </div>
+                    <div class="p-6 relative">
+                        <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">Développeur Frontend</h4>
+                        <p class="text-gray-500 text-sm mb-4">Agence Web</p>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Refonte de sites vitrines corporate. Optimisation des performances et animations CSS.</p>
+                        <div class="flex gap-2 text-xs font-medium text-gray-400">
+                            <span>#React</span> <span>#Tailwind</span> <span>#Figma</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Projet Perso -->
+                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card cursor-pointer border border-slate-100">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-main/30 group-hover:bg-transparent transition-all z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Code" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 right-4 bg-navy-main text-white text-xs font-bold px-3 py-1 z-20">Projet</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">App de Gestion</h4>
+                        <p class="text-gray-500 text-sm mb-4">Projet Académique</p>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Création d'un dashboard complet pour la gestion de stocks. Authentification et base de données temps réel.</p>
+                        <div class="flex gap-2 text-xs font-medium text-gray-400">
+                            <span>#NodeJS</span> <span>#MongoDB</span> <span>#VueJS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Expérience / Projet -->
+                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card cursor-pointer border border-slate-100">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-main/30 group-hover:bg-transparent transition-all z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=800&auto=format&fit=crop" alt="Analytics" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 right-4 bg-navy-main text-white text-xs font-bold px-3 py-1 z-20">Projet</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">Portfolio V1</h4>
+                        <p class="text-gray-500 text-sm mb-4">Personnel</p>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Première itération de mon site personnel. Apprentissage des bases du HTML/CSS responsive.</p>
+                        <div class="flex gap-2 text-xs font-medium text-gray-400">
+                            <span>#HTML</span> <span>#CSS</span> <span>#JS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://github.com" target="_blank" class="inline-block border-b border-navy-dark text-navy-dark hover:text-gold hover:border-gold transition-colors pb-1">Voir plus sur GitHub <i class="fa-brands fa-github ml-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activités Extrascolaires -->
+    <section id="activities" class="py-24 bg-navy-dark text-white relative overflow-hidden">
+        <!-- Background Texture -->
+        <div class="absolute inset-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-navy-stone to-transparent opacity-10"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl mb-4">Équilibre & Passions</h2>
+                <p class="text-navy-mist font-light">Au-delà du code, ce qui m'anime au quotidien.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                
+                <!-- Equitation / Sport -->
+                <div class="p-8 border border-white/10 hover:border-gold/50 rounded transition-all duration-300 bg-navy-main/30 backdrop-blur-sm gsap-fade-up">
+                    <div class="text-4xl text-gold mb-4"><i class="fa-solid fa-person-running"></i></div>
+                    <h3 class="font-serif text-xl mb-3">Sport</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Pratique régulière. Le sport m'enseigne la persévérance et le dépassement de soi.
+                    </p>
+                </div>
+
+                <!-- Voyage / Découverte -->
+                <div class="p-8 border border-white/10 hover:border-gold/50 rounded transition-all duration-300 bg-navy-main/30 backdrop-blur-sm gsap-fade-up" style="transition-delay: 100ms;">
+                    <div class="text-4xl text-gold mb-4"><i class="fa-solid fa-compass"></i></div>
+                    <h3 class="font-serif text-xl mb-3">Voyages</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Exploration de nouvelles cultures. Toujours curieux de découvrir de nouveaux horizons.
+                    </p>
+                </div>
+
+                <!-- Associatif / Autre -->
+                <div class="p-8 border border-white/10 hover:border-gold/50 rounded transition-all duration-300 bg-navy-main/30 backdrop-blur-sm gsap-fade-up" style="transition-delay: 200ms;">
+                    <div class="text-4xl text-gold mb-4"><i class="fa-solid fa-users"></i></div>
+                    <h3 class="font-serif text-xl mb-3">Vie Associative</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Membre actif du BDE. Organisation d'événements et gestion d'équipe.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-navy-stone pt-24 pb-12">
+        <div class="max-w-4xl mx-auto px-6">
+            
+            <div class="bg-white p-8 md:p-12 shadow-2xl rounded-sm -mt-32 relative z-20 mb-16 border-t-4 border-gold">
+                <div class="text-center mb-8">
+                    <h2 class="font-serif text-3xl text-navy-dark">Me Contacter</h2>
+                    <p class="text-gray-500 mt-2">Un projet ? Une opportunité ? Discutons-en.</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wide text-gray-500 mb-2">Nom</label>
+                            <input type="text" class="w-full bg-slate-50 border border-gray-200 p-3 focus:outline-none focus:border-navy-main transition-colors" placeholder="Votre nom">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wide text-gray-500 mb-2">Email</label>
+                            <input type="email" class="w-full bg-slate-50 border border-gray-200 p-3 focus:outline-none focus:border-navy-main transition-colors" placeholder="votre@email.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wide text-gray-500 mb-2">Message</label>
+                        <textarea rows="4" class="w-full bg-slate-50 border border-gray-200 p-3 focus:outline-none focus:border-navy-main transition-colors" placeholder="Bonjour..."></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="px-10 py-3 bg-navy-dark text-white font-semibold hover:bg-navy-main transition-colors rounded-sm shadow-lg">
+                            Envoyer
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="text-center space-y-8">
+                <div class="flex justify-center space-x-8">
+                    <a href="#" class="text-2xl text-navy-dark hover:text-gold transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="text-2xl text-navy-dark hover:text-gold transition-colors"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="text-2xl text-navy-dark hover:text-gold transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+                
+                <p class="text-gray-400 text-sm font-light">
+                    &copy; 2026 Ellen FRAIRE.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

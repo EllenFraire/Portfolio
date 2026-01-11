@@ -1,0 +1,39 @@
+/* Custom Scrollbar for Chrome/Safari/Edge */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #112240; /* Navy Main */
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0a192f; /* Navy Dark */
+}
+
+/* Scroll Offset for Fixed Navbar */
+html {
+    scroll-padding-top: 80px; /* Adjust based on navbar height */
+}
+
+/* Typography Tweaks */
+.font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Smooth selection color */
+::selection {
+    background-color: #d4a373; /* Gold */
+    color: white;
+}
+
+/* Specific Project Card Hover Effect helper if needed beyond Tailwind */
+.project-card:hover img {
+    /* Tailwind handles scale, this is just backup */
+    transform: scale(1.1);
+}
