@@ -122,10 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (videoCard && video) {
         videoCard.addEventListener('mouseenter', () => {
             video.play();
+            video.muted = false;
         });
 
         videoCard.addEventListener('mouseleave', () => {
             video.pause();
+            video.muted = true;
         });
     }
 });
