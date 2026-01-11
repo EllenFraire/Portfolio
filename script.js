@@ -95,13 +95,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (videoCard && video) {
         videoCard.addEventListener('mouseenter', () => {
-            video.play();
-            video.muted = false;
+            let playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    // This error is expected if the user mouses out before playback starts.
+                    // We can safely ignore it.
+                });
+            }
         });
 
         videoCard.addEventListener('mouseleave', () => {
             video.pause();
-            video.muted = true;
         });
     }
 });
