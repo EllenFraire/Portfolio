@@ -84,31 +84,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Timeline Animation ---
-    // Animate timeline line drawing down
-    gsap.from('.border-l-2', {
+    const timeline = document.getElementById('timeline');
+    const timelineItems = gsap.utils.toArray('.timeline-item');
+    const timelineLine = timeline.querySelector('.border-l-2');
+
+    // Set initial state
+    gsap.set(timelineItems, { opacity: 0, y: 50, scale: 0.9 });
+    gsap.set(timelineLine, { scaleY: 0, transformOrigin: 'top center' });
+
+    // Timeline animation
+    const tl = gsap.timeline({
         scrollTrigger: {
-            trigger: '#timeline',
-            start: 'top 70%',
+            trigger: timeline,
+            start: 'top 20%',
             end: 'bottom 80%',
-            scrub: 1
-        },
-        scaleY: 0,
-        transformOrigin: "top center",
-        ease: "none"
+            scrub: true,
+        }
     });
 
-    // Animate timeline items individually
-    gsap.utils.toArray('.timeline-item').forEach((item, i) => {
-        gsap.from(item, {
-            scrollTrigger: {
-                trigger: item,
-                start: 'top 95%',
-            },
-            opacity: 0,
-            y: 30,
-            duration: 0.6,
-            delay: i * 0.1 // slight delay for sequence feel
-        });
+    tl.to(timelineLine, { scaleY: 1 });
+
+    timelineItems.forEach((item) => {
+        tl.to(item, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            ease: 'power2.out',
+        }, '-=0.5');
     });
 
     // --- Project Cards Stagger ---
