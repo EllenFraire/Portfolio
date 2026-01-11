@@ -40,12 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Section Title Reveals ---
-    // Select all elements with 'gsap-fade-up' class
     gsap.utils.toArray('.gsap-fade-up').forEach(element => {
         gsap.from(element, {
             scrollTrigger: {
                 trigger: element,
-                start: 'top 85%', // Start animation when top of element hits 85% of viewport height
+                start: 'top 85%',
                 toggleActions: 'play none none reverse'
             },
             y: 40,
@@ -55,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Left Fade
     gsap.utils.toArray('.gsap-fade-left').forEach(element => {
         gsap.from(element, {
             scrollTrigger: {
@@ -69,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Right Fade
     gsap.utils.toArray('.gsap-fade-right').forEach(element => {
         gsap.from(element, {
             scrollTrigger: {
@@ -83,29 +80,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Project Video Hover with sound after click ---
+    let audioUnlocked = false;
 
+    // First user interaction unlocks audio
+    document.addEventListener("click", () => {
+        audioUnlocked = true;
+    }, { once: true });
 
-    // --- Project Cards Stagger ---
-    // (Handled by class gsap-fade-up generally, but let's make cards stagger if they are in the grid)
-    // Note: The general rule above handles them, but specific staggering can be added if needed.
-    
-    // --- Project Video Hover ---
     const videoCard = document.querySelector('.project-card');
     const video = document.getElementById('project-video-1');
 
     if (videoCard && video) {
         videoCard.addEventListener('mouseenter', () => {
+            if (audioUnlocked) {
+                video.muted = false;
+                video.volume = 1;
+            }
             let playPromise = video.play();
             if (playPromise !== undefined) {
                 playPromise.catch(error => {
-                    // This error is expected if the user mouses out before playback starts.
-                    // We can safely ignore it.
+                    // Ignore errors if playback is interrupted
                 });
             }
         });
 
         videoCard.addEventListener('mouseleave', () => {
             video.pause();
+            video.currentTime = 0;
+            video.muted = true; // Reset to muted for next hover
         });
     }
 });
