@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.from(item, {
             scrollTrigger: {
                 trigger: item,
-                start: 'top 85%',
+                start: 'top 95%',
             },
             opacity: 0,
             y: 30,
