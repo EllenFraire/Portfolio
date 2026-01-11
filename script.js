@@ -83,35 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Timeline Animation ---
-    const timeline = document.getElementById('timeline');
-    const timelineItems = gsap.utils.toArray('.timeline-item');
-    const timelineLine = timeline.querySelector('.border-l-2');
 
-    // Set initial state
-    gsap.set(timelineItems, { opacity: 0, y: 50, scale: 0.9 });
-    gsap.set(timelineLine, { scaleY: 0, transformOrigin: 'top center' });
-
-    // Timeline animation
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: timeline,
-            start: 'top 20%',
-            end: 'bottom 80%',
-            scrub: true,
-        }
-    });
-
-    tl.to(timelineLine, { scaleY: 1 });
-
-    timelineItems.forEach((item) => {
-        tl.to(item, {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            ease: 'power2.out',
-        }, '-=0.5');
-    });
 
     // --- Project Cards Stagger ---
     // (Handled by class gsap-fade-up generally, but let's make cards stagger if they are in the grid)
