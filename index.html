@@ -54,6 +54,8 @@
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 <body class="bg-navy-stone text-navy-dark antialiased overflow-x-hidden">
 
@@ -99,8 +101,8 @@
             <!-- Gradient Overlay -->
             <div class="absolute inset-0 bg-gradient-to-b from-navy-dark/80 via-navy-main/60 to-navy-stone z-10"></div>
             <!-- Image: Natural Blue Mist/Landscape -->
-            <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=2600&auto=format&fit=crop" 
-                 alt="Natural Blue Landscape" 
+            <img src="./university.jpg" 
+                 alt="University building" 
                  class="w-full h-full object-cover opacity-80 scale-105" 
                  id="hero-bg">
         </div>
@@ -139,7 +141,7 @@
             <div class="gsap-fade-right relative">
                 <div class="relative z-10 rounded overflow-hidden shadow-2xl">
                     <!-- Image: Natural Blue Landscape -->
-                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop" alt="Paysage Bleu Naturel" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                    <img src="./connemara.jpg" alt="Connemara landscape" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
                 </div>
                 <!-- Offset border -->
                 <div class="absolute top-4 -left-4 w-full h-full border-2 border-navy-main z-0"></div>
@@ -258,10 +260,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Card 1: Project Video -->
-                <a href="project-detail.html" class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card project-card-vertical border border-slate-100">
+                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card project-card-vertical border border-slate-100">
                     <div class="aspect-[9/16] overflow-hidden relative">
                         <div class="absolute inset-0 bg-navy-main/30 group-hover:bg-transparent transition-all z-10 flex items-center justify-center">
-                            <span class="text-white text-lg opacity-100 group-hover:opacity-0 transition-opacity duration-300">Passez votre souris sur l'image</span>
+                            <span class="text-white text-lg opacity-100 group-hover:opacity-0 transition-opacity duration-300">Découvrez la vidéo</span>
                         </div>
                             <video id="project-video-1" muted loop playsinline
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
@@ -273,41 +275,87 @@
                     <div class="p-6 relative">
                         <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">Voyage Lisbonne</h4>
                         <p class="text-gray-500 text-sm mb-4">Vidéo courte</p>
-                        <p class="text-gold text-xs font-bold uppercase tracking-wider">Cliquer pour en savoir plus</p>
-                    </div>
-                </a>
-
-                <!-- Card 2: Projet Perso -->
-                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card cursor-pointer border border-slate-100">
-                    <div class="h-48 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-navy-main/30 group-hover:bg-transparent transition-all z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Code" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                        <span class="absolute top-4 right-4 bg-navy-main text-white text-xs font-bold px-3 py-1 z-20">Projet</span>
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">App de Gestion</h4>
-                        <p class="text-gray-500 text-sm mb-4">Projet Académique</p>
-                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Création d'un dashboard complet pour la gestion de stocks. Authentification et base de données temps réel.</p>
-                        <div class="flex gap-2 text-xs font-medium text-gray-400">
-                            <span>#NodeJS</span> <span>#MongoDB</span> <span>#VueJS</span>
-                        </div>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Vidéo qui revient sur un projet scolaire réalisé en groupe en deuxième année : la learning expedition que nous avons fait à Lisbonne, au Portugal.</p>
                     </div>
                 </div>
 
-                <!-- Card 3: Expérience / Projet -->
-                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card cursor-pointer border border-slate-100">
-                    <div class="h-48 overflow-hidden relative">
+                <!-- Card 2: Brunch d'Automne -->
+                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card project-card-vertical border border-slate-100">
+                    <div class="aspect-[9/16] overflow-hidden relative">
                         <div class="absolute inset-0 bg-navy-main/30 group-hover:bg-transparent transition-all z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=800&auto=format&fit=crop" alt="Analytics" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                        <span class="absolute top-4 right-4 bg-navy-main text-white text-xs font-bold px-3 py-1 z-20">Projet</span>
+                        <img src="./brunch-coucy.jpg" alt="Brunch d'automne" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 right-4 bg-gold text-navy-dark text-xs font-bold px-3 py-1 z-20">Événementiel</span>
                     </div>
-                    <div class="p-6">
-                        <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">Portfolio V1</h4>
-                        <p class="text-gray-500 text-sm mb-4">Personnel</p>
-                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Première itération de mon site personnel. Apprentissage des bases du HTML/CSS responsive.</p>
-                        <div class="flex gap-2 text-xs font-medium text-gray-400">
-                            <span>#HTML</span> <span>#CSS</span> <span>#JS</span>
+                    <div class="p-6 relative">
+                        <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">Brunch d'Automne au Château</h4>
+                        <p class="text-gray-500 text-sm mb-4">Château Coucy - Oenotourisme</p>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Promotion d'un brunch d'automne pour valoriser les partenariats locaux et attirer une nouvelle clientèle.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Soirées Raclettes -->
+                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card project-card-vertical border border-slate-100">
+                    <div class="aspect-[9/16] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-main/30 group-hover:bg-transparent transition-all z-10"></div>
+                        <img src="./raclette-coucy.jpg" alt="Soirées raclettes au Château Coucy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 right-4 bg-gold text-navy-dark text-xs font-bold px-3 py-1 z-20">Événementiel</span>
+                    </div>
+                    <div class="p-6 relative">
+                        <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">Soirées Raclettes au Château</h4>
+                        <p class="text-gray-500 text-sm mb-4">Château Coucy - Oenotourisme</p>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Promotion des soirées raclettes au château pour la saison hivernale.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 4: Post Instagram Coucy -->
+                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card project-card-vertical border border-slate-100">
+                    <div class="aspect-[9/16] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-main/30 group-hover:bg-transparent transition-all z-10"></div>
+                        <img src="./post-insta-coucy.jpg" alt="Post Instagram Château Coucy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 right-4 bg-gold text-navy-dark text-xs font-bold px-3 py-1 z-20">Marketing Digital</span>
+                    </div>
+                    <div class="p-6 relative">
+                        <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">Nouveaux Millésimes Château Coucy</h4>
+                        <p class="text-gray-500 text-sm mb-4">Post Instagram - Octobre 2025</p>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Création d'un post Instagram pour promouvoir les deux nouveaux millésimes des vins blanc et rosé 2025.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Interview Didier Dorin PIDR -->
+                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card project-card-vertical border border-slate-100">
+                    <div class="aspect-[9/16] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-main/30 group-hover:bg-transparent transition-all z-10 flex items-center justify-center">
+                            <span class="text-white text-lg opacity-100 group-hover:opacity-0 transition-opacity duration-300">Découvrez l'interview</span>
                         </div>
+                            <video id="project-video-2" muted loop playsinline
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <source src="./interview-didier-dorin-pidr.m4v" type="video/mp4">
+                            </video>
+                        <span class="absolute top-4 right-4 bg-gold text-navy-dark text-xs font-bold px-3 py-1 z-20">Vidéo</span>
+                    </div>
+                    <div class="p-6 relative">
+                        <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">Interview - Didier Dorin (PIDR)</h4>
+                        <p class="text-gray-500 text-sm mb-4">Co-directeur Pastis de l'Île de Ré</p>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Vidéo d'interview réalisée lors de mon stage de deuxième année chez Pastis de l'Île de Ré.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Golf Troussechemise PIDR -->
+                <div class="group bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden project-card project-card-vertical border border-slate-100">
+                    <div class="aspect-[9/16] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-main/30 group-hover:bg-transparent transition-all z-10 flex items-center justify-center">
+                            <span class="text-white text-lg opacity-100 group-hover:opacity-0 transition-opacity duration-300">Découvrez la vidéo</span>
+                        </div>
+                            <video id="project-video-3" muted loop playsinline
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <source src="./golf-troussechemise-pidr.m4v" type="video/mp4">
+                            </video>
+                        <span class="absolute top-4 right-4 bg-gold text-navy-dark text-xs font-bold px-3 py-1 z-20">Événementiel</span>
+                    </div>
+                    <div class="p-6 relative">
+                        <h4 class="font-serif text-xl text-navy-dark mb-2 group-hover:text-blue-700 transition-colors">Golf Troussechemise (PIDR)</h4>
+                        <p class="text-gray-500 text-sm mb-4">Compétition de Golf - Partenariat</p>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Vidéo récapitulative d'un événement où Pastis de l'Île de Ré était partenaire d'une compétition de golf.</p>
                     </div>
                 </div>
 
@@ -408,6 +456,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

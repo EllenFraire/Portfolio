@@ -88,27 +88,29 @@ document.addEventListener('DOMContentLoaded', () => {
         audioUnlocked = true;
     }, { once: true });
 
-    const videoCard = document.querySelector('.project-card');
-    const video = document.getElementById('project-video-1');
+    const videoCards = document.querySelectorAll('.project-card');
 
-    if (videoCard && video) {
-        videoCard.addEventListener('mouseenter', () => {
-            if (audioUnlocked) {
-                video.muted = false;
-                video.volume = 1;
-            }
-            let playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    // Ignore errors if playback is interrupted
-                });
-            }
-        });
+    videoCards.forEach(card => {
+        const video = card.querySelector('video');
+        if (video) {
+            card.addEventListener('mouseenter', () => {
+                if (audioUnlocked) {
+                    video.muted = false;
+                    video.volume = 1;
+                }
+                let playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        // Ignore errors if playback is interrupted
+                    });
+                }
+            });
 
-        videoCard.addEventListener('mouseleave', () => {
-            video.pause();
-            video.currentTime = 0;
-            video.muted = true; // Reset to muted for next hover
-        });
-    }
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+                video.muted = true; // Reset to muted for next hover
+            });
+        }
+    });
 });
