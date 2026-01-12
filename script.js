@@ -113,4 +113,56 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+    // --- Contact Form Handling (AJAX) ---
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Envoi...';
+            formStatus.classList.add('hidden');
+            formStatus.className = 'hidden text-center text-sm p-3 rounded-sm'; // Reset classes
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            fetch('send_email.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                formStatus.innerText = result.message;
+                formStatus.classList.remove('hidden');
+                
+                if (result.success) {
+                    formStatus.classList.add('bg-green-100', 'text-green-800', 'border', 'border-green-200');
+                    contactForm.reset();
+                } else {
+                    formStatus.classList.add('bg-red-100', 'text-red-800', 'border', 'border-red-200');
+                }
+            })
+            .catch(error => {
+                formStatus.innerText = "Une erreur est survenue. Veuillez réessayer.";
+                formStatus.classList.remove('hidden');
+                formStatus.classList.add('bg-red-100', 'text-red-800', 'border', 'border-red-200');
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalBtnText;
+            });
+        });
+    }
 });
